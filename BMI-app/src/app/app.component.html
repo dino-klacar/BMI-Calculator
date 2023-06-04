@@ -1,5 +1,4 @@
 <div class="ms-2 container-fluid">
-
   <div class="row">
     <div class="col-6">
       <div class="card mt-3">
@@ -7,33 +6,29 @@
         <div class="card-body">
           <h6 class="card-subtitle mb-2 text-muted">Enter your information</h6>
           <div>
-            <div>
-              <label class="fw-bold">Name</label>
-              /*  <input class="form-control" type="text" [(ngModel)]="name"> */
-            </div>
-
             <div class="mt-2">
               <label class="fw-bold">Weight</label>
-              <input class="form-control" type="number" [(ngModel)]="weight">
+              <input class="form-control" type="number" [(ngModel)]="weight" />
             </div>
 
             <div class="mt-2">
               <label class="fw-bold">Height</label>
-              <input class="form-control" type="number" [(ngModel)]="height">
+              <input class="form-control" type="number" [(ngModel)]="height" />
             </div>
           </div>
           <div class="text-center mt-2">
-            <button style="width: 200px" class="btn btn-primary mb-2" (click)="calcBMI()">
+            <button
+              style="width: 200px"
+              class="btn btn-primary mb-2"
+              (click)="calcBMI()"
+            >
               Calculate BMI
             </button>
           </div>
         </div>
       </div>
     </div>
-
-
   </div>
-
 
   <div class="row">
     <div class="col-6">
@@ -41,17 +36,43 @@
         <h5 class="card-header">BMI Calculator Output</h5>
         <div class="card-body">
           <div>
-            <div>
-              <label class="fw-bold">Name</label>
-              <br>
-              {{name}}
+            <h4 *ngIf="bmi" class="mt-2">Your BMI is : {{ bmi }}</h4>
+            <div class="scale">
+              <div
+                class="indicator"
+                [style.left.%]="calculateIndicatorPosition()"
+              ></div>
+              <div class="scale-line"></div>
             </div>
-            <h4 *ngIf="bmi" class="mt-2">BMI: {{bmi}}, You are {{bmiCategory}}</h4>
+            <div class="scale-labels">
+              <span
+                *ngFor="let scale of scales"
+                [ngClass]="{
+                  'scale-label': true,
+                  'scale-label-active': scale.label === bmiCategory
+                }"
+              >
+                {{ scale.label }}
+              </span>
+            </div>
+            <p *ngIf="bmiCategory === 'Underweight'" class="mt-2 text-success">
+              {{ Message }}
+            </p>
+            <p
+              *ngIf="bmiCategory === 'Normal weight'"
+              class="mt-2 text-primary"
+            >
+              {{ Message }}
+            </p>
+            <p *ngIf="bmiCategory === 'Overweight'" class="mt-2 text-warning">
+              {{ Message }}
+            </p>
+            <p *ngIf="bmiCategory === 'Obese'" class="mt-2 text-danger">
+              {{ Message }}
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
 </div>
