@@ -2,7 +2,7 @@
 
 ## **1. Introduction**
 
-BMI Calculator is a portfolio frontend app for me.
+BMI Calculator is frontend app for me.
 
 ## **2. Features**
 
@@ -15,7 +15,9 @@ BMI Calculator includes main page where the calculation is
 
 ## **4. Functionality**
 
-Main page includes
+Main page includes :
+Input part for enerting weight and height 
+Output part, next to result has a dynamic graphical scale that shows result
 
 ## **5. Technical Requirements**
 
